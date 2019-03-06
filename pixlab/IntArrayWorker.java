@@ -102,15 +102,33 @@ public class IntArrayWorker
   
   public int getCount(int n)
   {
-      int count = 0;
-      for (int i = 0; i<matrix.length;i++)
-      {
-          for (int j = 0; j<matrix[0].length;j++)
-          {
-              if (n[i][j] == n)
-              {
-                  count++;
-                }  
-        }
+    int count = 0;
+    for (int i = 0; i<matrix.length;i++)
+    {
+        for (int j = 0; j<matrix[0].length;j++)
+        {
+            if (matrix[i][j] == n)
+            {
+               count++;
+            }  
+      }
     }
+    return count;
+  }
+  
+  public int getLargest()
+  {
+      int max = matrix[0][0];
+      int eye = 0;
+      for (int[] i: matrix)
+      {
+         for (int j: i)
+         {
+             if (i[j]>max)
+                max = i[j];
+         }
+         eye++;
+      }
+      return max;
+  }
 }
