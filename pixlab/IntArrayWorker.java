@@ -120,15 +120,23 @@ public class IntArrayWorker
   {
       int max = matrix[0][0];
       int eye = 0;
-      for (int[] i: matrix)
+      for (int[] row: matrix)
       {
-         for (int j: i)
+         for (int pixel: row)
          {
-             if (i[j]>max)
-                max = i[j];
+             if (pixel>max)
+                max = pixel;
          }
-         eye++;
       }
       return max;
+  }
+  public int getColTotal(int n)
+  {
+      int sum = 0;
+      for (int[] row: matrix)
+      {
+          sum += row[n];
+      }
+      return sum;
   }
 }
