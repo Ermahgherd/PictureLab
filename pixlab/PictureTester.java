@@ -58,6 +58,22 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  public static void testmirrorDiagonalBottomLinetoTopLine()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorDiagonalBottomLinetoTopLine();
+      beach.explore();
+  }
+  
+  public static void testmirrorDiagonalTopLinetoBottomLine()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorDiagonalBottomLinetoTopLine();
+      beach.explore();
+  }
+  
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -65,6 +81,14 @@ public class PictureTester
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
+  }
+  
+  public static void testmirrorArms()
+  {
+      Picture snowman = new Picture("snowman.jpg");
+      snowman.explore();
+      snowman.mirrorArms();
+      snowman.explore();
   }
   
   /** Method to test the collage method */
@@ -106,6 +130,7 @@ public class PictureTester
       underwater.fixUnderwater();
       underwater.explore();
   }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -124,8 +149,10 @@ public class PictureTester
     //testMirrorTemple();
     //testMirrorVerticalRighttoLeft();
     //testMirrorHorizontalToptoBottom();
-    testMirrorHorizontalBottomtoTop();
-    //testMirrorArms();
+    //testMirrorHorizontalBottomtoTop();
+    //testmirrorDiagonalBottomLinetoTopLine();
+    //testmirrorDiagonalTopLinetoBottomLine();
+    testmirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();

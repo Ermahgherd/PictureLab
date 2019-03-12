@@ -235,16 +235,70 @@ public class Picture extends SimplePicture
     } 
   }
   
-  public void mirrorDiagonal()
+  public void mirrorDiagonalBottomLinetoTopLine()
   {
       Pixel [][] pixels = this.getPixels2D();
       Pixel bottomLinePixel = null;
       Pixel topLinePixel = null;
       int height = pixels.length;
       int width = pixels[0].length;
-      
+      int mirror = Math.min(height,width);
+      for (int row = 0; row < mirror; row++)
+      {
+          for (int col = 0; col < mirror; col++)
+          {
+              if (row<col)
+              {
+                  bottomLinePixel = pixels[row][col];
+                  topLinePixel = pixels[col][row];
+                  topLinePixel.setColor(bottomLinePixel.getColor());
+              }
+          }
+      }
   }
   
+  public void mirrorDiagonalTopLinetoBottomLine()
+  {
+      Pixel [][] pixels = this.getPixels2D();
+      Pixel bottomLinePixel = null;
+      Pixel topLinePixel = null;
+      int height = pixels.length;
+      int width = pixels[0].length;
+      int mirror = Math.min(height,width);
+      for (int row = 0; row < mirror; row++)
+      {
+          for (int col = 0; col < mirror; col++)
+          {
+              if (col<row)
+              {
+                  bottomLinePixel = pixels[row][col];
+                  topLinePixel = pixels[col][row];
+                  bottomLinePixel.setColor(topLinePixel.getColor());
+              }
+          }
+      }
+  }
+  
+  
+  public void mirrorArms()
+  {
+      Pixel [][] pixels = this.getPixels2D();
+      Pixel bottomPixel = null;
+      Pixel topPixel = null;
+      int height = pixels.length;
+      int width = pixels[0].length;
+      int mirror = Math.min(height,width);
+      for (int row = 160; row< 190; row++)
+      {
+          for (int col = 100; col < 170; col++)
+          {
+              bottomPixel = pixels[row+67][col-7];
+              topPixel = pixels[row][col];
+              bottomPixel.setColor(topPixel.getColor());
+          }
+      }
+  }
+ 
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
@@ -260,13 +314,15 @@ public class Picture extends SimplePicture
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
+        count++;
         leftPixel = pixels[row][col];      
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+    System.out.println("The amount of time this for loop runs is: " 
+                        + count + " times.");
   }
   
   /** copy from the passed fromPic to the
