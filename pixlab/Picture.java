@@ -426,7 +426,22 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
-  
+  public void myCollage()
+  {
+      Picture beach = new Picture("beach.jpg");
+      Picture unonou = new Picture ("unonou.png");
+      Picture koala = new Picture("koala.jpg");
+      Picture snowman = new Picture("snowman.jpg");
+      this.copy(beach,0,0);
+      this.copy(unonou, 0,69);
+      this.copy(unonou, 200,69);
+      this.mirrorVertical();
+      this.copy(koala, 162,225,51,163,228,360);
+      this.greyscale();
+      this.zeroBlue();
+      this.copy(snowman,62,285,60,160,180,230);
+      this.write("collage.jpg");
+  }
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
     */
@@ -434,7 +449,10 @@ public class Picture extends SimplePicture
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
     Pixel[][] pixels = this.getPixels2D();
+    Color bottomColor = null;
     Color rightColor = null;
     for (int row = 0; row < pixels.length; row++)
     {
@@ -443,12 +461,21 @@ public class Picture extends SimplePicture
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[row+1][col];
+        bottomColor = bottomPixel.getColor();
         rightColor = rightPixel.getColor();
         if (leftPixel.colorDistance(rightColor) > 
             edgeDist)
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
+        
+        /*if (topPixel.colorDistance(bottomColor) > 
+            edgeDist)
+          topPixel.setColor(Color.BLACK);
+        else
+          topPixel.setColor(Color.WHITE);*/
       }
     }
   }
