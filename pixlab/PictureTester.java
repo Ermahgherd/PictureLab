@@ -118,8 +118,17 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
+    swan.explore();
     swan.edgeDetection(10);
     swan.explore();
+  }
+  
+  public static void testEdgeDetection2()
+  {
+      Picture swan = new Picture("swan.jpg");
+      swan.explore();
+      swan.edgeDetection2(10);
+      swan.explore();
   }
   
   public static void testNegate()
@@ -184,9 +193,9 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    testmyCollage();
-    //testEdgeDetection();
-    //testEdgeDetection2();
+    //testmyCollage();
+    testEdgeDetection();
+    testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
